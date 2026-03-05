@@ -1,0 +1,46 @@
+package lab3;
+import java.util.Scanner;
+public class Savings {
+    private String ner;           
+    private String valyut;       
+    private double jiliin_huu;    
+    private int sar;            
+    private double uldegdel; 
+    public Savings(String ner, String valyut, double jiliin_huu, int sar, double uldegdel) {
+        this.ner = ner;
+        this.valyut = valyut;
+        this.jiliin_huu = jiliin_huu;
+        this.sar = sar;
+        this.uldegdel = uldegdel;
+    }
+    private double savingsCalcAccrued() {
+        double sariin_huu = jiliin_huu / 12;
+        return (uldegdel * sariin_huu * sar) / 100;
+    }
+    private double savingsCalc() {
+        return uldegdel + savingsCalcAccrued();
+    }
+    public void printReport() {
+        double Hurimtlagdsan_huu = savingsCalcAccrued();
+        double Hadgalamjiin_uldegdel = savingsCalc();
+        System.out.printf("Ner: %s%n", ner);
+        System.out.printf("Hurimtlagdsan huu: %.2f %s%n", Hurimtlagdsan_huu, valyut);
+        System.out.printf("Niit uldegdel: %.2f %s%n", Hadgalamjiin_uldegdel, valyut);
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ner oruulna uu: ");
+        String ner = sc.nextLine();
+        System.out.print("Valyut oruulna uu: ");
+        String valyut = sc.nextLine();
+        System.out.print("Jiliin huu (%): ");
+        double jiliin_huu = sc.nextDouble();
+        System.out.print("Hugatsaa (sar): ");
+        int sar = sc.nextInt();
+        System.out.print("Ehnii uldegdel: ");
+        double uldegdel = sc.nextDouble();
+        Savings s1 = new Savings(ner, valyut, jiliin_huu, sar, uldegdel);
+        s1.printReport();
+        sc.close();
+    }
+}
