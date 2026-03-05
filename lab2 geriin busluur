@@ -1,0 +1,16 @@
+import java.util.Scanner;
+public class aripmetic {
+  public static void main(String[] args) {
+    Scanner input = new Scanner(System.in);
+    double number1, number2, aripmetic, geometry;
+    System.out.print("Ehnii toogoo oruulna uu: "); 
+    number1 = input.nextDouble();    
+    System.out.print("Daraagiin toogoo oruulna uu: "); 
+    number2 = input.nextDouble();
+    aripmetic = (number1 + number2)/2;
+    geometry = ( Math.sqrt(number1* number2));
+    System.out.printf("aripmetic bol %.2f%n", aripmetic); 
+    System.out.printf("geometry bol %.2f%n", geometry); 
+    input.close();
+  }
+}
