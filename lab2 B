@@ -1,0 +1,24 @@
+import java.util.Scanner;
+public class gurvaljin {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+	        System.out.print("ax ay: ");
+	        double ax = sc.nextDouble();
+	        double ay = sc.nextDouble();
+	        System.out.print("bx by: ");
+	        double bx = sc.nextDouble();
+	        double by = sc.nextDouble();
+	        System.out.print("cx cy: ");
+	        double cx = sc.nextDouble();
+	        double cy = sc.nextDouble();
+	        double AB = Math.sqrt(Math.pow(bx - ax, 2) + Math.pow(by - ay, 2));
+	        double BC = Math.sqrt(Math.pow(cx - bx, 2) + Math.pow(cy - by, 2));
+	        double CA = Math.sqrt(Math.pow(ax - cx, 2) + Math.pow(ay - cy, 2));    
+	        double p = (AB + BC + CA) / 2.0;
+	        double talbai = Math.sqrt(p * (p - AB) * (p - BC) * (p - CA));
+
+	        System.out.println("Gurvaljnii talbai = " + talbai);
+
+	        sc.close();
+	    }
+	}
