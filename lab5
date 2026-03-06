@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class Statistics {
-
     // 1. Static Overloaded Methods (Тогтмол тооны аргументуудад)
     // 2 тооны дундаж
     public static double calculateMean(double n1, double n2) {
@@ -33,7 +32,6 @@ public class Statistics {
         }
         return Math.sqrt(sumSquareDiff / numbers.length);
     }
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Хэдэн тоон дээр статистик үйлдэл хийх вэ? (2-5): ");
@@ -48,20 +46,16 @@ public class Statistics {
             a[i] = sc.nextDouble();
         }
         System.out.println("\n--- Үр дүн ---");
-      
         // Varargs ашиглан үр дүнг тооцоолох
-
         double meanVar = calculateMeanVar(a);
         double sdVar = calculateSDVar(a);
         System.out.printf("Varargs ашигласан Дундаж: %.2f\n", meanVar);
         System.out.printf("Varargs ашигласан Стандарт хазайлт: %.2f\n", sdVar);
-
         // Overloading ашиглан жишээ болгож харьцуулах (жишээ: n=2 үед)
         if (n == 2) {
             double meanOverload = calculateMean(a[0], a[1]);
             System.out.printf("Overloading ашигласан Дундаж (n=2): %.2f\n", meanOverload);
         }
-        
         sc.close();
     }
 }
