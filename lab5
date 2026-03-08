@@ -1,16 +1,15 @@
 import java.util.Scanner;
 
 public class Statistics {
-    // 1. Static Overloaded Methods (Тогтмол тооны аргументуудад)
-    // 2 тооны дундаж
+    
     public static double calculateMean(double n1, double n2) {
         return (n1 + n2) / 2;
     }
-    // 3 тооны дундаж
+    
     public static double calculateMean(double n1, double n2, double n3) {
         return (n1 + n2 + n3) / 3;
     }
-    // Стандарт хазайлтыг тооцоолох томьёо (overloaded жишээ)
+    // Standart hazailtiig oloh tomyo
     public static double calculateSD(double n1, double n2) {
         double mean = calculateMean(n1, n2);
         return Math.sqrt((Math.pow(n1 - mean, 2) + Math.pow(n2 - mean, 2)) / 2);
@@ -34,27 +33,27 @@ public class Statistics {
     }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Хэдэн тоон дээр статистик үйлдэл хийх вэ? (2-5): ");
+        System.out.print("Heden toon deer static uildel hiih ve?(2-5): ");
         int n = sc.nextInt();
         if (n < 2 || n > 5) {
-            System.out.println("Зөвхөн 2-оос 5 хүртэлх тоо оруулна уу.");
+            System.out.println("Zovhon 2oos 5 hurtel too oruulna uu.");
             return;
         }
         double[] a = new double[n];
         for (int i = 0; i < n; i++) {
-            System.out.printf("%d-р тоог оруул: ", i + 1);
+            System.out.printf("%d-r toog oruul: ", i + 1);
             a[i] = sc.nextDouble();
         }
-        System.out.println("\n--- Үр дүн ---");
-        // Varargs ашиглан үр дүнг тооцоолох
+        System.out.println("\n Ur dun ");
+    
         double meanVar = calculateMeanVar(a);
         double sdVar = calculateSDVar(a);
-        System.out.printf("Varargs ашигласан Дундаж: %.2f\n", meanVar);
-        System.out.printf("Varargs ашигласан Стандарт хазайлт: %.2f\n", sdVar);
-        // Overloading ашиглан жишээ болгож харьцуулах (жишээ: n=2 үед)
+        System.out.printf("Arithmetic dundaj: %.2f\n", meanVar);
+        System.out.printf("Standart hazailt: %.2f\n", sdVar);
+        // (jishee: n=2 uyd)
         if (n == 2) {
             double meanOverload = calculateMean(a[0], a[1]);
-            System.out.printf("Overloading ашигласан Дундаж (n=2): %.2f\n", meanOverload);
+            System.out.printf("Overloading ashiglasan dundaj (n=2): %.2f\n", meanOverload);
         }
         sc.close();
     }
