@@ -1,0 +1,191 @@
+import java.util.Scanner;
+
+public class MatrixCalculator {
+
+    
+    static class matrix {
+
+        private int[][] operand1;   // Matrix 1
+        private int[][] operand2;   // Matrix 2
+        private String operator;    // +, -, * үйлдэл
+
+        // Байгуулагч метод
+        public matrix(int[][] operand1, int[][] operand2, String operator) {
+            this.operand1 = operand1;
+            this.operand2 = operand2;
+            this.operator = operator;
+        }
+
+        // Нэмэх үйлдэл: operand1 + operand2
+        private int[][] addition(int[][] operand1, int[][] operand2) {
+            int rows = operand1.length;
+            int cols = operand1[0].length;
+            int[][] result = new int[rows][cols];
+
+            for (int i = 0; i < rows; i++) {
+                for (int j = 0; j < cols; j++) {
+                    result[i][j] = operand1[i][j] + operand2[i][j];
+                }
+            }
+            return result;
+        }
+
+        // Хасах үйлдэл: operand1 - operand2
+        private int[][] subtraction(int[][] operand1, int[][] operand2) {
+            int rows = operand1.length;
+            int cols = operand1[0].length;
+            int[][] result = new int[rows][cols];
+
+            for (int i = 0; i < rows; i++) {
+                for (int j = 0; j < cols; j++) {
+                    result[i][j] = operand1[i][j] - operand2[i][j];
+                }
+            }
+            return result;
+        }
+
+        // Үржих үйлдэл: operand1 * operand2
+        // operand1: (m x n), operand2: (n x p) => result: (m x p)
+        private int[][] multipliction(int[][] operand1, int[][] operand2) {
+            int m = operand1.length;
+            int n = operand1[0].length;
+            int p = operand2[0].length;
+            int[][] result = new int[m][p];
+
+            for (int i = 0; i < m; i++) {
+                for (int j = 0; j < p; j++) {
+                    for (int k = 0; k < n; k++) {
+                        result[i][j] += operand1[i][k] * operand2[k][j];
+                    }
+                }
+            }
+            return result;
+        }
+
+        // Үйлдэл сонгох метод
+        public int[][] chooseoperation() {
+            int[][] result = null;
+
+            switch (operator) {
+                case "+":
+                    System.out.println("\n=== Матрицын нийлбэр (A + B) ===");
+                    result = addition(operand1, operand2);
+                    break;
+                case "-":
+                    System.out.println("\n=== Матрицын ялгавар (A - B) ===");
+                    result = subtraction(operand1, operand2);
+                    break;
+                case "*":
+                    System.out.println("\n=== Матрицын үржвэр (A * B) ===");
+                    result = multipliction(operand1, operand2);
+                    break;
+                default:
+                    System.out.println("Буруу үйлдэл оруулсан байна!");
+                    return null;
+            }
+
+            printmatrix(result);
+            return result;
+        }
+
+        // Матрицыг дэлгэцэд хэвлэх метод
+        private void printmatrix(int[][] pmatrix) {
+            for (int i = 0; i < pmatrix.length; i++) {
+                System.out.print("| ");
+                for (int j = 0; j < pmatrix[i].length; j++) {
+                    System.out.printf("%6d ", pmatrix[i][j]);
+                }
+                System.out.println("|");
+            }
+        }
+    }
+
+    //Туслах методууд 
+
+    // Матрицын элементүүдийг гараас авах
+    static int[][] inputMatrix(Scanner sc, String name, int rows, int cols) {
+        int[][] mat = new int[rows][cols];
+        System.out.println(name + " матрицын элементүүдийг оруулна уу (" + rows + "x" + cols + "):");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                System.out.print("  [" + (i + 1) + "][" + (j + 1) + "]: ");
+                mat[i][j] = sc.nextInt();
+            }
+        }
+        return mat;
+    }
+
+    // Матрицыг хэвлэх (харуулах зориулалттай)
+    static void showMatrix(int[][] mat, String name) {
+        System.out.println("\n" + name + " матриц:");
+        for (int i = 0; i < mat.length; i++) {
+            System.out.print("| ");
+            for (int j = 0; j < mat[i].length; j++) {
+                System.out.printf("%6d ", mat[i][j]);
+            }
+            System.out.println("|");
+        }
+    }
+
+    //  main метод 
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Matrix calculator");
+        
+
+        // 1. Үйлдэл сонгох
+        System.out.print("\nҮйлдэл оруулна уу (+, -, *): ");
+        String op = sc.next().trim();
+
+        if (!op.equals("+") && !op.equals("-") && !op.equals("*")) {
+            System.out.println("Буруу үйлдэл! Зөвхөн +, -, * оруулна уу.");
+            return;
+        }
+
+        // 2. Матриц A-ийн хэмжээ
+        System.out.print("\nМатриц A-ийн мөрийн тоо: ");
+        int r1 = sc.nextInt();
+        System.out.print("Матриц A-ийн баганын тоо: ");
+        int c1 = sc.nextInt();
+
+        // 3. Матриц A-ийн элементүүд
+        int[][] A = inputMatrix(sc, "A", r1, c1);
+
+        // 4. Матриц B-ийн хэмжээ + нийцтэй байдлыг шалгах
+        int r2, c2;
+        System.out.print("\nМатриц B-ийн мөрийн тоо: ");
+        r2 = sc.nextInt();
+        System.out.print("Матриц B-ийн баганын тоо: ");
+        c2 = sc.nextInt();
+
+        // Нийцтэй байдлын шалгалт
+        if (op.equals("+") || op.equals("-")) {
+            if (r1 != r2 || c1 != c2) {
+                System.out.println("\nАлдаа: Нэмэх/хасах үйлдэлд 2 матрицын хэмжээ адил байх ёстой!");
+                System.out.println("A: " + r1 + "x" + c1 + "  B: " + r2 + "x" + c2);
+                return;
+            }
+        } else if (op.equals("*")) {
+            if (c1 != r2) {
+                System.out.println("\nАлдаа: Үржих үйлдэлд A-ийн баганын тоо, B-ийн мөрийн тоотой тэнцүү байх ёстой!");
+                System.out.println("A баганын тоо: " + c1 + "  B мөрийн тоо: " + r2);
+                return;
+            }
+        }
+
+        // 5. Матриц B-ийн элементүүд
+        int[][] B = inputMatrix(sc, "B", r2, c2);
+
+        // 6. Оролтын матрицуудыг харуулах
+        showMatrix(A, "A");
+        showMatrix(B, "B");
+
+        // 7. matrix объект үүсгэж үйлдэл гүйцэтгэх
+        matrix calc = new matrix(A, B, op);
+        calc.chooseoperation();
+
+        System.out.println("\nПрограмм амжилттай дууслаа.");
+        sc.close();
+    }
+}
