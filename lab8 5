@@ -1,0 +1,21 @@
+public class SoundCard {
+    private int channels;
+    private int sampleRate;
+    private String brand;
+    private String cardInterface;
+
+    public SoundCard(int channels, int sampleRate, String brand, String cardInterface) {
+        this.channels = channels;
+        this.sampleRate = sampleRate;
+        this.brand = brand;
+        this.cardInterface = cardInterface;
+    }
+
+    public void printInfo() {
+        System.out.println("---Sound Card---");
+        System.out.println("Indicator 1: " + brand);
+        System.out.println("Indicator 2: " + channels + " channels");
+        System.out.println("Indicator 3: " + sampleRate + " Hz");
+        System.out.println("Indicator 4: " + cardInterface);
+    }
+}
