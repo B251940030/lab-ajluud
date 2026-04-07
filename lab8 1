@@ -1,0 +1,21 @@
+public class Computer {
+    private Processor processor;
+    private Memory memory;
+    private DisplayCard displayCard;
+    private SoundCard soundCard;
+
+    public Computer() {
+        processor   = new Processor("Intel", 8, 3.6, 16);
+        memory      = new Memory(32, "DDR5", 4800, "Samsung");
+        displayCard = new DisplayCard(8, "NVIDIA RTX 4060", "ASUS", 2460);
+        soundCard   = new SoundCard(7, 192000, "Creative", "PCIe");
+    }
+
+    public void showInfo() {
+        System.out.println("Computer specifications:");
+        processor.printInfo();
+        memory.printInfo();
+        displayCard.printInfo();
+        soundCard.printInfo();
+    }
+}
