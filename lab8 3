@@ -1,0 +1,21 @@
+public class Memory {
+    private int size;
+    private String type;
+    private int speed;
+    private String brand;
+
+    public Memory(int size, String type, int speed, String brand) {
+        this.size = size;
+        this.type = type;
+        this.speed = speed;
+        this.brand = brand;
+    }
+
+    public void printInfo() {
+        System.out.println("---RAM---");
+        System.out.println("Indicator 1: " + brand);
+        System.out.println("Indicator 2: " + size + " GB");
+        System.out.println("Indicator 3: " + type);
+        System.out.println("Indicator 4: " + speed + " MHz");
+    }
+}
