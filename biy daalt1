@@ -1,0 +1,70 @@
+package biydaalt;
+
+public class Student {
+
+   
+    private String firstName;
+    private String lastName;
+    private int    age;
+    private String department;
+    private double score;
+
+   
+    public Student() {
+        this.firstName  = "Unknown";
+        this.lastName   = "Unknown";
+        this.age        = 0;
+        this.department = "None";
+        this.score      = 0.0;
+    }
+
+  
+    public Student(String firstName, String lastName,
+                   int age, String department, double score) {
+        this.firstName  = firstName;
+        this.lastName   = lastName;
+        this.age        = age;
+        this.department = department;
+        this.score      = score;
+    }
+
+   
+    private String evaluatePerformance() {
+        if (score >= 90) {
+            return "Онцлох  (A)";
+        } else if (score >= 75) {
+            return "Сайн    (B)";
+        } else if (score >= 60) {
+            return "Дунд    (C)";
+        } else {
+            return "Хангалтгүй (F)";
+        }
+    }
+
+   
+    private double calculateBonus() {
+        return score * 0.1;
+    }
+
+   
+    public void displayInfo() {
+      
+        System.out.println("  Оюутны мэдээлэл");
+        System.out.println("Нэр       : " + firstName + " " + lastName);
+        System.out.println("Нас       : " + age);
+        System.out.println("Салбар    : " + department);
+        System.out.printf ("Оноо      : %.1f%n", score);
+        System.out.printf ("Урамшуулал: %.2f%n", calculateBonus());
+        System.out.println("Үнэлгээ   : " + evaluatePerformance());
+       
+    }
+
+    public static void printClassAverage(Student[] students) {
+        double sum = 0;
+        for (Student s : students) {
+            sum += s.score;
+        }
+        double avg = sum / students.length;
+        System.out.printf("Ангийн дундаж оноо: %.2f%n", avg);
+    }
+}
