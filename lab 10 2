@@ -1,0 +1,27 @@
+public class Worker extends Person {
+    // Гишүүн өгөгдлүүд
+    private String ajiltniKod;      // Ажилтны код
+    private String salbarNer;       // Салбарын нэр
+    private String ajilдOrsonOgnoo; // Ажилд орсон огноо
+
+    // Constructor
+    public Worker(String ovog, String ner, String register, String tursunOdor,
+                  String ajiltniKod, String salbarNer, String ajildOrsonOgnoo) {
+        super(ovog, ner, register, tursunOdor);
+        this.ajiltniKod = ajiltniKod;
+        this.salbarNer = salbarNer;
+        this.ajilдOrsonOgnoo = ajildOrsonOgnoo;
+    }
+
+    // Эх классын info() функцийг даран тодорхойлсон (Override)
+    @Override
+    public void info() {
+        super.info();
+        System.out.println("Ажлын газрын мэдээлэл:");
+        System.out.println("Ажилтны код: " + ajiltniKod);
+        System.out.println("Салбарын нэр: " + salbarNer);
+        System.out.println("Ажилд орсон огноо: " + getYear(ajilдOrsonOgnoo) + " оны "
+                + getMonth(ajilдOrsonOgnoo) + " сарын "
+                + getDay(ajilдOrsonOgnoo) + " өдөр");
+    }
+}
