@@ -1,0 +1,46 @@
+public class Person {
+    // Гишүүн өгөгдлүүд
+    protected String ovog;       // Овог
+    protected String ner;        // Нэр
+    protected String register;   // Регистерийн дугаар
+    protected String tursunOdor; // Төрсөн өдөр
+ 
+    // Constructor
+    public Person(String ovog, String ner, String register, String tursunOdor) {
+        this.ovog = ovog;
+        this.ner = ner;
+        this.register = register;
+        this.tursunOdor = tursunOdor;
+    }
+ 
+    // Овог нэрийг "Г.Батчулуун" хэлбэрээр буцаана
+    protected String getFullName(String ovog, String ner) {
+        return ovog.charAt(0) + "." + ner;
+    }
+ 
+    // Огнооноос жил авна (формат: YYYY-MM-DD)
+    protected int getYear(String date) {
+        return Integer.parseInt(date.split("-")[0]);
+    }
+ 
+    // Огнооноос сар авна
+    protected int getMonth(String date) {
+        return Integer.parseInt(date.split("-")[1]);
+    }
+ 
+    // Огнооноос өдөр авна
+    protected int getDay(String date) {
+        return Integer.parseInt(date.split("-")[2]);
+    }
+ 
+    // Мэдээлэл хэвлэх
+    protected void info() {
+        System.out.println("Хувь хүний үндсэн мэдээлэл:");
+        System.out.println("Овог нэр: " + getFullName(ovog, ner));
+        System.out.println("Регистерийн дугаар: " + register);
+        System.out.println("Төрсөн огноо: " + getYear(tursunOdor) + " оны "
+                + getMonth(tursunOdor) + " сарын "
+                + getDay(tursunOdor) + " өдөр");
+    }
+}
+ 
