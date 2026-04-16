@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Clock clock = new Clock();
+
+        // --- Цаг тохируулах сонголт ---
+        System.out.println("Цаг тохируулах арга сонгоно уу:");
+        System.out.println("  1 - Гараар оруулах");
+        System.out.println("  2 - Автоматаар (системийн цаг)");
+        System.out.print("Сонголт: ");
+        int choice1 = sc.nextInt();
+
+        if (choice1 == 1) {
+            System.out.print("Он: ");       int y   = sc.nextInt();
+            System.out.print("Сар: ");      int mon = sc.nextInt();
+            System.out.print("Огноо: ");    int d   = sc.nextInt();
+            System.out.print("Цаг: ");      int h   = sc.nextInt();
+            System.out.print("Минут: ");    int min = sc.nextInt();
+            System.out.print("Секунд: ");   int s   = sc.nextInt();
+            clock.setClock(y, mon, d, h, min, s);
+        } else {
+            clock.autoSetClock();
+        }
+
+        // --- Timer сонголт ---
+        System.out.println("\nTimer хэдэн секунд ажиллуулах вэ?");
+        System.out.println("  1 - 1000 секунд");
+        System.out.println("  2 - Тодорхой тоо оруулах");
+        System.out.print("Сонголт: ");
+        int choice2 = sc.nextInt();
+
+        if (choice2 == 1) {
+            clock.tickClock();
+        } else {
+            System.out.print("Секунд: ");
+            int tick = sc.nextInt();
+            clock.tickClock(tick);
+        }
+
+        sc.close();
+    }
+}
