@@ -1,0 +1,11 @@
+public class Main {
+    public static void main(String[] args) {
+        Worker w1 = new Worker(
+            "Ганбаатар", "Батчулуун", "та00231308",
+            "2000-03-13",
+            "P.IT13", "\"Эрдэнэт цогцолбор\" дээд сургууль", "2017-09-05"
+        );
+
+        w1.info();
+    }
+}
