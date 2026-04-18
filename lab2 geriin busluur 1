@@ -1,0 +1,15 @@
+import java.util.Scanner;
+
+public class GerBusluur {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
+        System.out.print("R = ");
+        double r = input.nextDouble();
+        double result = 3 * 2 * Math.PI * r;
+        
+        System.out.printf("Niit heregtei busluur: %.2f метр\n", result);
+        
+        input.close();
+    }
+}
